@@ -11,8 +11,8 @@ import java.math.BigDecimal;
 @Setter
 @Getter
 @ToString
-@Accessors(fluent = true, chain = true)
-@XmlRootElement(name = "AccountResponse")
+@XmlRootElement
+@Accessors(chain = true)
 public class AccountResponse {
     private Long id;
     private String number;

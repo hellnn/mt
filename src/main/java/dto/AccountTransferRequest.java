@@ -5,12 +5,14 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
 @Setter
 @Getter
 @ToString
-@Accessors(fluent = true, chain = true)
+@XmlRootElement
+@Accessors(chain = true)
 public class AccountTransferRequest {
     private String srcNumber;
     private String destNumber;

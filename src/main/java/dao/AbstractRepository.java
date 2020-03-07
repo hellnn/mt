@@ -4,10 +4,7 @@ import common.ConnectionHolder;
 import common.PreparedStatementSetter;
 import common.RowMapper;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +36,7 @@ public abstract class AbstractRepository<T> {
 
     protected boolean executeUpdate(String sql, PreparedStatementSetter setter) {
         Connection connection = ConnectionHolder.get();
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             try {
                 setter.setValues(statement);
                 return statement.executeUpdate() > 0;

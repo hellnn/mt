@@ -4,5 +4,5 @@ import java.sql.SQLException;
 
 @FunctionalInterface
 public interface TransactionCallback {
-    void execute() throws SQLException;
+    void execute();
 }

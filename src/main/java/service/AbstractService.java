@@ -12,8 +12,9 @@ public class AbstractService {
             connection.setAutoCommit(false);
             try {
                 callback.execute();
-            } catch (SQLException e) {
+            } catch (RuntimeException e) {
                 connection.rollback();
+                throw e;
             } finally {
                 connection.setAutoCommit(true);
                 ConnectionHolder.clear();

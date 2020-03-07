@@ -7,17 +7,17 @@ public class ConnectionHolder {
     private static final ThreadLocal<Connection> currentConnection = new ThreadLocal<>();
 
     public static Connection get() {
-        if (currentConnection.get() == null) {
-            Connection connection;
-            try {
+        Connection connection = currentConnection.get();
+        try {
+            if (connection == null || connection.isClosed()) {
                 connection = DataSourceUtils.getConnection();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+                currentConnection.set(connection);
+                return connection;
             }
-            currentConnection.set(connection);
-            return connection;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        return currentConnection.get();
+        return connection;
     }
 
     public static void clear() {
