@@ -1,9 +1,9 @@
-package service;
+package org.example.service;
 
-import common.BadRequestException;
-import dao.AccountRepository;
+import org.example.common.BadRequestException;
+import org.example.dao.AccountRepository;
 import lombok.RequiredArgsConstructor;
-import model.Account;
+import org.example.model.Account;
 
 import java.math.BigDecimal;
 import java.util.Arrays;

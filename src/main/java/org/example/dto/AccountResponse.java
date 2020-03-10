@@ -1,4 +1,4 @@
-package dto;
+package org.example.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +13,8 @@ import java.math.BigDecimal;
 @ToString
 @XmlRootElement
 @Accessors(chain = true)
-public class AccountRequest {
+public class AccountResponse {
+    private Long id;
     private String number;
     private BigDecimal balance;
 }

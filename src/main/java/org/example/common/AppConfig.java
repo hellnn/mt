@@ -1,4 +1,4 @@
-package common;
+package org.example.common;
 
 import java.io.IOException;
 import java.util.Properties;

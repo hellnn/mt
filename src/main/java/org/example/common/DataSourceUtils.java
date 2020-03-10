@@ -1,4 +1,4 @@
-package common;
+package org.example.common;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

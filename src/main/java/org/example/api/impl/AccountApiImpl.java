@@ -1,14 +1,14 @@
 package api.impl;
 
 import api.AccountApi;
-import common.BadRequestException;
-import dto.AccountRequest;
-import dto.AccountResponse;
-import dto.AccountTransferRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import model.Account;
-import service.AccountService;
+import org.example.common.BadRequestException;
+import org.example.dto.AccountRequest;
+import org.example.dto.AccountResponse;
+import org.example.dto.AccountTransferRequest;
+import org.example.model.Account;
+import org.example.service.AccountService;
 
 import javax.ws.rs.core.Response;
 
@@ -38,6 +38,11 @@ public class AccountApiImpl implements AccountApi {
     public Response addAccount(AccountRequest request) {
         log.debug("addAccount: {}", request);
         Account account = accountService.save(new Account(request.getNumber(), request.getBalance()));
+        if (request.getNumber() == null) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Account number must be given")
+                    .build();
+        }
         return Response.ok(
                 new AccountResponse()
                         .setId(account.getId())
@@ -49,6 +54,11 @@ public class AccountApiImpl implements AccountApi {
     @Override
     public Response transfer(AccountTransferRequest request) {
         log.debug("transfer: {}", request);
+        if (request == null || request.getSrcNumber() == null || request.getDestNumber() == null || request.getSum() == null) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Transfer details must be given")
+                    .build();
+        }
         try {
             accountService.transfer(request.getSrcNumber(), request.getDestNumber(), request.getSum());
         } catch (BadRequestException e) {

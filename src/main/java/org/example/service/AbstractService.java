@@ -1,7 +1,7 @@
-package service;
+package org.example.service;
 
-import common.ConnectionHolder;
-import common.TransactionCallback;
+import org.example.common.ConnectionHolder;
+import org.example.common.TransactionCallback;
 
 import java.sql.Connection;
 import java.sql.SQLException;

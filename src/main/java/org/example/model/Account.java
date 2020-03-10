@@ -1,9 +1,6 @@
-package model;
+package org.example.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -11,6 +8,7 @@ import java.math.BigDecimal;
 @Getter
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 public class Account {
     private Long id;
     private String number;
@@ -20,4 +18,5 @@ public class Account {
         this.number = number;
         this.balance = balance;
     }
+
 }

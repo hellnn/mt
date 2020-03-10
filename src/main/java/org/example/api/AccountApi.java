@@ -1,7 +1,7 @@
 package api;
 
-import dto.AccountRequest;
-import dto.AccountTransferRequest;
+import org.example.dto.AccountRequest;
+import org.example.dto.AccountTransferRequest;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

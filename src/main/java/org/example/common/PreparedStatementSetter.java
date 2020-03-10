@@ -1,4 +1,4 @@
-package common;
+package org.example.common;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

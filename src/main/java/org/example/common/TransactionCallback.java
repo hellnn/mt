@@ -1,6 +1,4 @@
-package common;
-
-import java.sql.SQLException;
+package org.example.common;
 
 @FunctionalInterface
 public interface TransactionCallback {

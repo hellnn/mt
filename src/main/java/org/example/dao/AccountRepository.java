@@ -1,8 +1,7 @@
-package dao;
+package org.example.dao;
 
-import model.Account;
+import org.example.model.Account;
 
-import java.sql.ResultSet;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,17 +37,13 @@ public class AccountRepository extends AbstractRepository<Account> {
                 executeUpdate(INSERT_ACCOUNT_SQL, ps -> {
                     ps.setString(1, a.getNumber());
                     ps.setBigDecimal(2, a.getBalance());
-                    try (ResultSet rs = ps.getGeneratedKeys()) {
-                        if (rs.next()) {
-                            a.setId(rs.getLong(1));
-                        }
-                    }
-                });
+                }, rs -> a.setId(rs.getLong(1)));
             } else {
                 executeUpdate(UPDATE_ACCOUNT_SQL, ps -> {
                     ps.setString(1, a.getNumber());
                     ps.setBigDecimal(2, a.getBalance());
                     ps.setLong(3, a.getId());
+                }, rs -> {
                 });
             }
         });

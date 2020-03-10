@@ -1,8 +1,6 @@
-package dto;
+package org.example.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -12,9 +10,10 @@ import java.math.BigDecimal;
 @Getter
 @ToString
 @XmlRootElement
+@NoArgsConstructor
+@AllArgsConstructor
 @Accessors(chain = true)
-public class AccountResponse {
-    private Long id;
+public class AccountRequest {
     private String number;
     private BigDecimal balance;
 }

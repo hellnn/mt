@@ -1,8 +1,9 @@
-package dao;
+package org.example.dao;
 
-import common.ConnectionHolder;
-import common.PreparedStatementSetter;
-import common.RowMapper;
+import org.example.common.ConnectionHolder;
+import org.example.common.GeneratedResultCallback;
+import org.example.common.PreparedStatementSetter;
+import org.example.common.RowMapper;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -34,12 +35,18 @@ public abstract class AbstractRepository<T> {
         }
     }
 
-    protected boolean executeUpdate(String sql, PreparedStatementSetter setter) {
+    protected boolean executeUpdate(String sql, PreparedStatementSetter setter, GeneratedResultCallback callback) {
         Connection connection = ConnectionHolder.get();
         try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             try {
                 setter.setValues(statement);
-                return statement.executeUpdate() > 0;
+                int result = statement.executeUpdate();
+                try (ResultSet rs = statement.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        callback.execute(rs);
+                    }
+                }
+                return result > 0;
             } finally {
                 if (connection.getAutoCommit()) {
                     connection.close();
