@@ -37,12 +37,12 @@ public class AccountApiImpl implements AccountApi {
     @Override
     public Response addAccount(AccountRequest request) {
         log.debug("addAccount: {}", request);
-        Account account = accountService.save(new Account(request.getNumber(), request.getBalance()));
-        if (request.getNumber() == null) {
+        if (request == null || request.getNumber() == null || request.getBalance() == null) {
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity("Account number must be given")
+                    .entity("Account details must be given")
                     .build();
         }
+        Account account = accountService.save(new Account(request.getNumber(), request.getBalance()));
         return Response.ok(
                 new AccountResponse()
                         .setId(account.getId())
