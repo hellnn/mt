@@ -6,7 +6,7 @@ import org.example.common.TransactionCallback;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class AbstractService {
+public abstract class AbstractService {
     protected void doInTransaction(TransactionCallback callback) {
         try (Connection connection = ConnectionHolder.get()) {
             connection.setAutoCommit(false);
