@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AccountRepository extends AbstractRepository<Account> {
-    public static final String FIND_ACCOUNT_SQL_PREFIX = "select * from account where number in (";
-    public static final String INSERT_ACCOUNT_SQL = "insert into account (number, balance) values (?, ?)";
-    public static final String UPDATE_ACCOUNT_SQL = "update account set number = ?, balance = ? where id = ?";
+    private static final String FIND_ACCOUNT_SQL_PREFIX = "select * from account where number in (";
+    private static final String INSERT_ACCOUNT_SQL = "insert into account (number, balance) values (?, ?)";
+    private static final String UPDATE_ACCOUNT_SQL = "update account set number = ?, balance = ? where id = ?";
 
     public Account findByNumber(String number) {
         return findByNumbers(Collections.singletonList(number), false)

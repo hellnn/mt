@@ -1,4 +1,4 @@
-package api;
+package org.example.api;
 
 import org.example.dto.AccountRequest;
 import org.example.dto.AccountTransferRequest;

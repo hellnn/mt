@@ -1,8 +1,8 @@
-package api.impl;
+package org.example.api.impl;
 
-import api.AccountApi;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.api.AccountApi;
 import org.example.common.BadRequestException;
 import org.example.dto.AccountRequest;
 import org.example.dto.AccountResponse;

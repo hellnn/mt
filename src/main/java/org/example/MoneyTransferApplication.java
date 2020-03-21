@@ -1,11 +1,11 @@
 package org.example;
 
-import api.AccountApi;
-import api.impl.AccountApiImpl;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
-import org.example.dao.AccountRepository;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
 import org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider;
+import org.example.api.AccountApi;
+import org.example.api.impl.AccountApiImpl;
+import org.example.dao.AccountRepository;
 import org.example.service.AccountService;
 
 public class MoneyTransferApplication {
